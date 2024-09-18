@@ -8,34 +8,32 @@ This tutorial goes through the the creation and configuration of Virtual Machine
 
 We’re going to create a Domain Controller and a Client and then ensure the two are can communicate with one another.
 
-Before we get started, I wanted to briefly state what a domain controller is and some of what it can do:
+Before we get started, I wanted to briefly state what a domain controller is and some of what it can do:<br>
 
-A domain controller is a server on a network that performs several functions:
-Authentication – Verifying user’s credentials who are trying to access the network.
-Authorization - Who can use what based off their permissions.
-Group Policy – Configuration of settings for users and computers.
-Active Directory – Database of all users, computers, and resources in the network.
+- A domain controller is a server on a network that performs several functions:
+- Authentication – Verifying user’s credentials who are trying to access the network.
+- Authorization - Who can use what based off their permissions.
+- Group Policy – Configuration of settings for users and computers.
+- Active Directory – Database of all users, computers, and resources in the network.<br>
 
 
-All right, now that we know that, off we go!
+All right, now that we know that, off we go!<br>
 First up, we’ll need to create a resource group.
 ![1](https://github.com/user-attachments/assets/9f998dbc-aeec-46ce-92db-fa8ee04ec50a)<br><br><br><br>
 
 
 
 
-We’ll set up a resource group by filling out the necessary fields:
-The resource group name – can be whatever you want.
-Region – I chose US East 2
+We’ll set up a resource group by filling out the necessary fields:<br>
+- The resource group name – can be whatever you want.
+- Region – I chose US East 2
 ![2](https://github.com/user-attachments/assets/23e44b4f-51e4-4248-837c-00652e954acc)<br><br><br><br>
 
 
 
 Click Review and Create at the bottom of the page to continue to validation.
-![3](https://github.com/user-attachments/assets/aa578283-e130-49ff-8e99-da77ce5ebf85)<br><br><br><br>
-
-
-Click create at the bottom of the screen.
+![3](https://github.com/user-attachments/assets/aa578283-e130-49ff-8e99-da77ce5ebf85)<br>
+Click create at the bottom of the screen.<br><br><br><br>
 
  
 
@@ -51,24 +49,20 @@ Now, we’ll create a Virtual Network. Type Virtual Networks into the search bar
 
 
 
-We’ll want to fill in the necessary fields here, pay close attention to the resource group and region. We want the resource group to be the one we just made; in my case it was vm-lab-test. And we want the region to be exactly the same as what we selected for our resource group. 
+We’ll want to fill in the necessary fields here, pay close attention to the resource group and region. We want the resource group to be the one we just made; in my case it was vm-lab-test. We want the region to be exactly the same as what we selected for our resource group. 
 We can name the network what we want, so I’ll name it vm-network.
-![7](https://github.com/user-attachments/assets/adb71e23-425c-487b-8b67-df35d858732f)<br><br><br><br>
+![7](https://github.com/user-attachments/assets/adb71e23-425c-487b-8b67-df35d858732f)
+When we’re done, we’ll click the blue button at the bottom that says review + create and on the following screen review the information one last time and then click the blue button at the bottom labeled create.<br><br><br><br>
 
- 
 
-
-When we’re done, we’ll click the blue button at the bottom that says review + create and on the following screen review the information one last time and then click the blue button at the bottom labeled create.
-
-Space space space 
 Azure should be creating your virtual Network now.
 ![8](https://github.com/user-attachments/assets/dbf5c423-9f04-40b2-a326-dc8702616ba1)<br><br><br><br>
 
 
 
-When that’s done, lets type virtual machine into the Azure search bar and then click create, then select the first option, Azure Virtual Machine.
-![9](https://github.com/user-attachments/assets/ee2f296a-e83d-4e8e-8750-8740083cd073)<br><br><br><br>
-![10](https://github.com/user-attachments/assets/4bda0237-74f1-4cec-baed-f75aa24a270b)<br><br><br><br>
+When that’s done, lets type virtual machine into the Azure search bar and then click create, then select the first option: Azure Virtual Machine.
+![9](https://github.com/user-attachments/assets/ee2f296a-e83d-4e8e-8750-8740083cd073)
+![10](https://github.com/user-attachments/assets/4bda0237-74f1-4cec-baed-f75aa24a270b)
 ![11](https://github.com/user-attachments/assets/48783d1d-3c8c-493a-9758-aac897bb9703)<br><br><br><br>
 
 
@@ -76,24 +70,22 @@ When that’s done, lets type virtual machine into the Azure search bar and then
 
 
 
-Here, we’re going to setup the Domain Controller. Here are the necessary fields we need to fill out:
-Resource Group – make sure this is the same resource group we created.
-Virtual Machine Name – You can name it whatever you want but we’ll use DC-1.
-Region – Make sure it’s the same as what we selected for our resource group and virtual network.
-Image – We’ll want to select Windows Server 2022 Datacenter: Azure Edition – x64 Gen2
-![12](https://github.com/user-attachments/assets/07779d71-e5de-4976-9fb5-2a56f7203171)<br><br><br><br>
+Here, we’re going to setup the Domain Controller. Here are the necessary fields we need to fill out:<br>
+
+- Resource Group – make sure this is the same resource group we created.
+- Virtual Machine Name – You can name it whatever you want but we’ll use DC-1.
+- Region – Make sure it’s the same as what we selected for our resource group and virtual network.
+- Image – We’ll want to select Windows Server 2022 Datacenter: Azure Edition – x64 Gen2
+![12](https://github.com/user-attachments/assets/07779d71-e5de-4976-9fb5-2a56f7203171)<br><br><br>
 
 
 
-Scroll down to the next section to the next fields we need to fill out:
+Scroll down to the next section to the next fields we need to fill out:<br>
  
-
-
-
-Size – Here, we’ll choose Standard_E2s_v3 – 2 vcpus, 16GiB memory. This is basically going to affect the speed of the Virtual machine, having 2 virtual cpus with 16 Gigabytes of memory will be fine for what we’re going to need it for.
-Username – You can type what you want here and for the passwords. 
-Password
-Confirm Password
+- Size – Here, we’ll choose Standard_E2s_v3 – 2 vcpus, 16GiB memory. This is basically going to affect the speed of the Virtual machine, having 2 virtual cpus with 16 Gigabytes of memory will be fine for what we’re going to need it for.
+- Username – You can type what you want here and for the passwords. 
+- Password
+- Confirm Password<br>
 
 Now that we’re all done, let’s click the button at the bottom labeled Next: Disks > to proceed.
 ![13](https://github.com/user-attachments/assets/f14ed3f6-6087-4770-b357-df7f68117b9f)<br><br><br><br>
@@ -123,59 +115,61 @@ Then Azure will start creating the Virtual Machine. Once that’s done, we’ll 
 
 
 
-Now we’re going to create the client virtual machine. This process is going to be similar to creating the domain controller. The fields we’ll need to fill out are:
-Resource Group – make sure this is the same resource group we created.
-Virtual Machine Name – You can name it whatever you want but we’ll use client-1.
-Region – Make sure it’s the same as what we selected for our resource group, virtual network, and domain control.
-Image – Windows 10 Pro, version 22H2 – x64 Gen2
+Now we’re going to create the client virtual machine. This process is going to be similar to creating the domain controller. The fields we’ll need to fill out are:<br>
+
+- Resource Group – make sure this is the same resource group we created.
+- Virtual Machine Name – You can name it whatever you want but we’ll use client-1.
+- Region – Make sure it’s the same as what we selected for our resource group, virtual network, and domain control.
+- Image – Windows 10 Pro, version 22H2 – x64 Gen2
 
 ![18](https://github.com/user-attachments/assets/82e6bf9b-56ca-4985-9d75-ed92f1be7b8c)<br><br><br><br>
 
 
 
 
-Now we’ll scroll down to the next section to the next fields we need to fill out will be the same as last time:
+Now we’ll scroll down to the next section to the next fields we need to fill which are same as last time:<br> 
+
+- Size – Here, we’ll choose Standard_E2s_v3 – 2 vcpus, 16GiB memory. This is basically going to affect the speed of the Virtual machine, having 2 virtual CPUs with 16 Gigabytes of memory will be fine for what we’re going to need it for.
+- Username – You can type what you want here and for the passwords. 
+- Password
+- Confirm Password
 ![19](https://github.com/user-attachments/assets/ce47e26d-4462-4dea-a1b1-52298840722d)<br><br><br><br>
 
 
 
-Size – Here, we’ll choose Standard_E2s_v3 – 2 vcpus, 16GiB memory. This is basically going to affect the speed of the Virtual machine, having 2 virtual CPUs with 16 Gigabytes of memory will be fine for what we’re going to need it for.
-Username – You can type what you want here and for the passwords. 
-Password
-Confirm Password
+
 
 We have one additional step; we need to click the box that says:
 ![20](https://github.com/user-attachments/assets/371b1b11-4af4-4db0-9ebc-1aff4c7a3c3b)<br><br><br><br>
 
 
-When we’ve done that, we’ll click Next: Disks >
+When we’ve done that, we’ll click Next: Disks ><br>
 
-Again, we’re going to skip this page because what we’re looking for is on the next page. Click Next: Networking >
+Again, we’re going to skip this page because what we’re looking for is on the next page. Click Next: Networking ><br>
 
 On the networking page, we’re looking to make sure that the Virtual Network is set to the same one we created. In my case it was vm-network.
 
 ![21](https://github.com/user-attachments/assets/f3d5f076-5f5b-4af8-a6dc-033fb7fe9e80)<br><br><br><br>
 
 
-Once we’ve done that, the process is the same as the domain controller: We’ll click the blue button at the bottom labeled Review + create. On the next page Azure will begin the validation process once, it’s completed press the blue button at the bottom labeled create.
+Once we’ve done that, the process is the same as the domain controller: We’ll click the blue button at the bottom labeled Review + create. On the next page Azure will begin the validation process once, it’s completed press the blue button at the bottom labeled create.<br><br><br>
 
-Quick Tip -- 
-If you get this error message:
+**Quick Tip** -- <br>
+If you get this error message:<br>
 ![22](https://github.com/user-attachments/assets/efb02529-73ae-42ee-9e56-0c61fffe77aa)<br><br><br><br>
 
 
-What we’ll need to do is go back to the basics tab (we can click on the basics tab that’s highlighted in the image above) and click the box that says:
+What we’ll need to do is go back to the basics tab (we can click on the basics tab that’s highlighted in the image above) and click the box that says:<br>
 ![20](https://github.com/user-attachments/assets/ae06a294-f872-41a9-b413-ac1b390419a1)<br><br><br><br>
  
 
-If it’s already checked, uncheck it and check it again.
-Once, we’ve done that, we can simply press review + create.
+If it’s already checked, uncheck it and check it again.<br>
+Once, we’ve done that, we can simply press review + create.<br>
 
-Quick Tip Over ----
+**Quick Tip Over** ----<br><br><br>
 
-Next up, we’ll want to set the DCs (Domain Controller) private IP address to static.
-We’re going to do this because A static IP address for the Domain Controller ensures its address never changes, so our network can always easily find it. This helps avoid problems with connecting to it or using services that rely on it, such as DNS. 
-It also makes troubleshooting simpler if any issues come up.
+Next up, we’ll want to set the DCs (Domain Controller) private IP address to static.<br>
+We’re going to do this because A static IP address for the Domain Controller ensures its address never changes, so our network can always easily find it. This helps avoid problems with connecting to it or using services that rely on it, such as DNS. It also makes troubleshooting simpler if any issues come up.<br>
 
 Okay, now we’ll go to the Virtual Machines page.
 ![23](https://github.com/user-attachments/assets/f620db72-0afa-4d50-9e88-534107282a61)<br><br><br><br>
@@ -196,7 +190,7 @@ Click on ipconfig1
 ![27](https://github.com/user-attachments/assets/f9c4792a-902c-44e1-9c1d-d50d25505162)<br><br><br><br>
 
 
-In the menu that pops out on the right, under Private IP address settings, change the private Ip address from dynamic to static. Then click save.
+In the menu that pops out on the right, under Private IP address settings, change the private IP address from dynamic to static. Then click save.
 ![28](https://github.com/user-attachments/assets/1617913a-897f-43a8-a142-bfae21797be2)<br><br><br><br>
 
 
@@ -205,10 +199,10 @@ Now, we’ll want to take note of the public IP address and the private IP addre
 ![29](https://github.com/user-attachments/assets/ba306d12-edc7-479e-8c87-21cf1494e7f0)<br><br><br><br>
 
 
-Up next, we’re going to set Client-1’s DNS settings to DC’s private IP address.
+Up next, we’re going to set Client-1’s DNS settings to DC’s private IP address.<br><br>
 The reason we want to connect Client-1 (and other clients if we had a bigger network) to the Domain controller is so the domain services we configured would be applied to Client-1 as opposed to the settings on the virtual network’s DNS server which has no idea about what we configured on our DC. Configurations such as how many DCs we have (In this case, it’s just the one DC. You can have more than one in a single domain, but there can only be one primary DC.) and their configurations.
 This will enable us to join the domain later, when we create one for DC-1.
-Also, while it might seem convenient to use the Virtual Network DNS server instead or creating a VM, this isn’t typically done because a VNDNS is not designed to perform the functions of a domain controller.
+Also, while it might seem convenient to use the Virtual Network DNS server instead or creating a VM, this isn’t typically done because a VNDNS is not designed to perform the functions of a domain controller.<br>
 
 On the virtual machines page, click on Client-1.
 ![39](https://github.com/user-attachments/assets/1d5b2702-9c8e-4176-9a39-3a5752165308)<br><br><br><br>
@@ -218,12 +212,12 @@ In the menu that opens, click Networking -> Network Settings -> The Virtual Netw
 ![40](https://github.com/user-attachments/assets/0c510459-2c19-4248-b078-0905c14b453d)<br><br><br><br>
 
 
- Settings -> DNS Severs -> Under DNS Servers  
+Settings -> DNS Severs -> Under DNS Servers<br>
 By default, client -1 will be using the V-net’s DNS server but we’re going to select custom and type in the private IP address of DC-1.
 ![41](https://github.com/user-attachments/assets/78582ce7-3a1f-41dd-b99d-e337b6e8e47f)<br><br><br><br>
 
 
-Then click save.
+Then click save.<br>
 
 
 ![42](https://github.com/user-attachments/assets/77e62a70-902a-43f6-97b4-ad2d98a63bb5)<br><br><br><br>
@@ -234,9 +228,9 @@ Go back to the main Virtual Machines page, select the box next to Client-1 and t
 
 
 
-After Client-1 finishes restarting, we’re going to log into DC-1 so we can disable the firewalls. Open remote desktop and type in the Public IP address for DC-1 and use the credentials you created for DC-1 and log in. 
+After Client-1 finishes restarting, we’re going to log into DC-1 so we can disable the firewalls. Open remote desktop and type in the Public IP address for DC-1 and use the credentials you created for DC-1 and log in.<br><br> 
 
-Quick Tip -- 
+**Quick Tip** --<br><br><br>
 If you forget your username or password, go to the virtual machines main page and click on the virtual machine who’s credentials you’ve forgotten, in this case let’s say it’s DC-1.
 ![30](https://github.com/user-attachments/assets/897fd676-30e2-4cd5-b0ad-482e6ad45793)<br><br><br><br>
 
@@ -251,21 +245,17 @@ Here you’ll be shown your username and you’ll be able to enter a new passwor
 ![32](https://github.com/user-attachments/assets/f8410c4a-ed3e-4872-b375-92533fc650a3)<br><br><br><br>
 
 
-When you’re done, click the blue update button at the bottom, give it a few seconds after it updates and try to log in.
+When you’re done, click the blue update button at the bottom, give it a few seconds after it updates and try to log in.<br><br>
 
-Quick Tip Over ----
-
-
-Once we’ve logged in, we’re going to disable the Firewall to enable our client to communicate with our domain controller.
-So, in the Windows search bar type run, in the run app type wf.msc.
-![33](https://github.com/user-attachments/assets/b2fafd3a-2925-4bbf-ab7b-c7fb8e87091c)<br><br><br><br>
+**Quick Tip Over** ----<br><br><br>
 
 
-![34](https://github.com/user-attachments/assets/4d453ce5-ff2d-4f41-953e-ee48ef2698cd)<br><br><br><br>
+Once we’ve logged in, we’re going to disable the Firewall to enable our client to communicate with our domain controller.<br>
+So, in the Windows search bar type run, in the run app type wf.msc.<br>
+![33](https://github.com/user-attachments/assets/b2fafd3a-2925-4bbf-ab7b-c7fb8e87091c)<br>
+![34](https://github.com/user-attachments/assets/4d453ce5-ff2d-4f41-953e-ee48ef2698cd)<br>
+Press OK.<br><br><br><br>
 
-
-
-Press enter.
 
 When the Windows Defender Firewall with Advanced Security window opens up, we’ll click on Windows Defender Firewall Properties.
 
@@ -287,14 +277,14 @@ We’ll want to do this for the next two tabs as well, Private Profile, and Publ
 ![38](https://github.com/user-attachments/assets/edc1e2cd-aaf8-4df1-9fa7-37f9cc9d6fbf)<br><br><br><br>
 
 
-When we’re done, we’ll click apply then okay.
+When we’re done, we’ll click apply then okay.<br>
 
-Next, we’re going attempt to ping DC-1 to ensure that we can communicate with it. Again, this will be important later when we create a domain for DC-1 and try to join it. 
-We’ll log into client-1 using remote desktop. 
-Select no for all the options that are in the menu you’re presented with.
-Once we’ve logged in, we’ll go to the Windows search bar and type in PowerShell and open the Windows PowerShell app.
-We’re going to ping DC-1 to make sure it’s accepting traffic from Client-1.
-In PowerShell, type Ping and the private IP address of DC-1 which in my case is 10.0.0.4.
+Next, we’re going attempt to ping DC-1 to ensure that we can communicate with it. Again, this will be important later when we create a domain for DC-1 and try to join it.<br>
+- We’ll log into client-1 using remote desktop. 
+- Select no for all the options that are in the menu you’re presented with.
+- Once we’ve logged in, we’ll go to the Windows search bar and type in PowerShell and open the Windows PowerShell app.
+- We’re going to ping DC-1 to make sure it’s accepting traffic from Client-1.
+- In PowerShell, type Ping and the private IP address of DC-1 which in my case is 10.0.0.4.
 
 ![43](https://github.com/user-attachments/assets/dbf4c88d-adf5-489e-b32a-c739c91410b8)<br><br><br><br>
 
@@ -312,7 +302,7 @@ To ensure that the DNS Server is in fact set to DC-1’s private IP address, in 
 
 
 If it isn’t displaying DC-1’s private IP address, a mistake has been made, maybe Client-1 wasn’t restarted after we customized the IP address to point at DC-1’s private IP address? If that’s the case, restarting the Client-1 will resolve the issue.
-![45](https://github.com/user-attachments/assets/87c0a9d3-c379-4b7f-82c2-d38a974b1fc7)<br><br><br><br>
+![45](https://github.com/user-attachments/assets/87c0a9d3-c379-4b7f-82c2-d38a974b1fc7)<br><br>
 
 
 
