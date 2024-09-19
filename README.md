@@ -4,9 +4,9 @@
 This tutorial goes through the the creation and configuration of Virtual Machines in Azure.<br /><br><br><br><br>
 
 
-We’re going to create a Domain Controller and a Client and then ensure the two are can communicate with one another.
+We’re going to create two Virtual Machines in Azure, one will be a Domain Controller and the other, a Client. Then we're going to ensure the two are can communicate with one another.
 
-Before we get started, I wanted to briefly state what a domain controller is and some of what it can do:<br>
+Before we get started, I wanted to briefly state what a domain controller is and a bit of what it can do:<br>
 
 - A domain controller is a server on a network that performs several functions:
 - Authentication – Verifying user’s credentials who are trying to access the network.
@@ -70,7 +70,7 @@ When that’s done, lets type virtual machine into the Azure search bar and then
 
 Here, we’re going to setup the Domain Controller. Here are the necessary fields we need to fill out:<br>
 
-- Resource Group – make sure this is the same resource group we created.
+- Resource Group – Make sure this is the same resource group we created.
 - Virtual Machine Name – You can name it whatever you want but we’ll use DC-1.
 - Region – Make sure it’s the same as what we selected for our resource group and virtual network.
 - Image – We’ll want to select Windows Server 2022 Datacenter: Azure Edition – x64 Gen2
@@ -102,7 +102,7 @@ On this page we want to make sure that the Virtual Network is set to the same on
 
 
 
-Once we’ve checked that, we’ll click the blue button at the bottom labeled Review + create. On the next page Azure will begin the validation process once, it’s completed press the blue button at the bottom labeled create.
+Once we’ve checked that, we’ll click the blue button at the bottom labeled Review + create. On the next page Azure will begin the validation process, once it’s completed press the blue button at the bottom labeled create.
 ![16](https://github.com/user-attachments/assets/a9ff2801-477a-48c2-a10b-407909cb7934)<br><br><br><br>
 
 
@@ -115,7 +115,7 @@ Then Azure will start creating the Virtual Machine. Once that’s done, we’ll 
 
 Now we’re going to create the client virtual machine. This process is going to be similar to creating the domain controller. The fields we’ll need to fill out are:<br>
 
-- Resource Group – make sure this is the same resource group we created.
+- Resource Group – Make sure this is the same resource group we created.
 - Virtual Machine Name – You can name it whatever you want but we’ll use client-1.
 - Region – Make sure it’s the same as what we selected for our resource group, virtual network, and domain control.
 - Image – Windows 10 Pro, version 22H2 – x64 Gen2
@@ -125,9 +125,9 @@ Now we’re going to create the client virtual machine. This process is going to
 
 
 
-Now we’ll scroll down to the next section to the next fields we need to fill which are same as last time:<br> 
+Now we’ll scroll down to the next section to the next fields we need to fill which are the same as last time:<br> 
 
-- Size – Here, we’ll choose Standard_E2s_v3 – 2 vcpus, 16GiB memory. This is basically going to affect the speed of the Virtual machine, having 2 virtual CPUs with 16 Gigabytes of memory will be fine for what we’re going to need it for.
+- Size – Here, we’ll choose Standard_E2s_v3 – 2 vcpus, 16GiB memory. This is basically going to affect the speed of the virtual machine, having 2 virtual CPUs with 16 Gigabytes of memory will be fine for what we’re going to need it for.
 - Username – You can type what you want here and for the passwords. 
 - Password
 - Confirm Password
@@ -150,7 +150,7 @@ On the networking page, we’re looking to make sure that the Virtual Network is
 ![21](https://github.com/user-attachments/assets/f3d5f076-5f5b-4af8-a6dc-033fb7fe9e80)<br><br><br><br>
 
 
-Once we’ve done that, the process is the same as the domain controller: We’ll click the blue button at the bottom labeled Review + create. On the next page Azure will begin the validation process once, it’s completed press the blue button at the bottom labeled create.<br><br><br>
+Once we’ve done that, the process is the same as the domain controller: We’ll click the blue button at the bottom labeled Review + create. On the next page Azure will begin the validation process, once it’s completed press the blue button at the bottom labeled create.<br><br><br>
 
 **Quick Tip** -- <br>
 If you get this error message:<br>
@@ -200,7 +200,7 @@ Now, we’ll want to take note of the public IP address and the private IP addre
 Up next, we’re going to set Client-1’s DNS settings to DC’s private IP address.<br><br>
 The reason we want to connect Client-1 (and other clients if we had a bigger network) to the Domain controller is so the domain services we configured would be applied to Client-1 as opposed to the settings on the virtual network’s DNS server which has no idea about what we configured on our DC. Configurations such as how many DCs we have (In this case, it’s just the one DC. You can have more than one in a single domain, but there can only be one primary DC.) and their configurations.
 This will enable us to join the domain later, when we create one for DC-1.
-Also, while it might seem convenient to use the Virtual Network DNS server instead or creating a VM, this isn’t typically done because a VNDNS is not designed to perform the functions of a domain controller.<br>
+Also, while it might seem convenient to use the Virtual Network DNS server instead of creating a VM, this isn’t typically done because a VNDNS is not designed to perform the functions of a domain controller.<br>
 
 On the virtual machines page, click on Client-1.
 ![39](https://github.com/user-attachments/assets/1d5b2702-9c8e-4176-9a39-3a5752165308)<br><br><br><br>
@@ -211,7 +211,7 @@ In the menu that opens, click Networking -> Network Settings -> The Virtual Netw
 
 
 Settings -> DNS Severs -> Under DNS Servers<br>
-By default, client -1 will be using the V-net’s DNS server but we’re going to select custom and type in the private IP address of DC-1.
+By default, Client-1 will be using the V-net’s DNS server but we’re going to select custom and type in the private IP address of DC-1.
 ![41](https://github.com/user-attachments/assets/78582ce7-3a1f-41dd-b99d-e337b6e8e47f)<br><br><br><br>
 
 
@@ -243,13 +243,13 @@ Here you’ll be shown your username and you’ll be able to enter a new passwor
 ![32](https://github.com/user-attachments/assets/f8410c4a-ed3e-4872-b375-92533fc650a3)<br><br><br><br>
 
 
-When you’re done, click the blue update button at the bottom, give it a few seconds after it updates and try to log in.<br><br>
+When you’re done, click the blue update button at the bottom. Give it a few seconds after it updates and try to log in.<br><br>
 
 **Quick Tip Over** ----<br><br><br>
 
 
 Once we’ve logged in, we’re going to disable the Firewall to enable our client to communicate with our domain controller.<br>
-So, in the Windows search bar type run, in the run app type wf.msc.<br>
+So, in the Windows search bar type run, in the run app, type wf.msc.<br>
 ![33](https://github.com/user-attachments/assets/b2fafd3a-2925-4bbf-ab7b-c7fb8e87091c)<br>
 ![34](https://github.com/user-attachments/assets/4d453ce5-ff2d-4f41-953e-ee48ef2698cd)<br>
 Press OK.<br><br><br><br>
@@ -278,7 +278,7 @@ We’ll want to do this for the next two tabs as well, Private Profile, and Publ
 When we’re done, we’ll click apply then okay.<br>
 
 Next, we’re going attempt to ping DC-1 to ensure that we can communicate with it. Again, this will be important later when we create a domain for DC-1 and try to join it.<br>
-- We’ll log into client-1 using remote desktop. 
+- We’ll log into Client-1 using remote desktop. 
 - Select no for all the options that are in the menu you’re presented with.
 - Once we’ve logged in, we’ll go to the Windows search bar and type in PowerShell and open the Windows PowerShell app.
 - We’re going to ping DC-1 to make sure it’s accepting traffic from Client-1.
@@ -299,14 +299,16 @@ To ensure that the DNS Server is in fact set to DC-1’s private IP address, in 
 
 
 
-If it isn’t displaying DC-1’s private IP address, a mistake has been made, maybe Client-1 wasn’t restarted after we customized the IP address to point at DC-1’s private IP address? If that’s the case, restarting the Client-1 will resolve the issue.
+If it isn’t displaying DC-1’s private IP address, a mistake has been made, maybe Client-1 wasn’t restarted after we customized the IP address to point at DC-1’s private IP address? If that’s the case, restarting Client-1 will resolve the issue.
 ![45](https://github.com/user-attachments/assets/87c0a9d3-c379-4b7f-82c2-d38a974b1fc7)<br><br>
 
 
 
 
 
-And we’ve finished setting up our Virtual Machines DC-1 and Client-1 in Azure.
+And we’ve finished setting up our Virtual Machines DC-1 and Client-1 in Azure.<br><br>
+
+See ya in the next one!
 
 
 
