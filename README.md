@@ -1,6 +1,6 @@
 ![Microsoft Azure](https://github.com/user-attachments/assets/03cebc2d-0e81-4339-b6e6-a1a57da33ce8)
 
-<h1>Creating & Configuring a Domain Controler and Client within Azure</h1>
+<h1>Creating & Configuring a Domain Controller and Client within Azure</h1>
 This tutorial goes through the the creation and configuration of Virtual Machines in Azure.<br /><br><br><br><br>
 
 
