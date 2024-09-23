@@ -9,7 +9,7 @@ We’re going to create two Virtual Machines in Azure; one will be a Domain Cont
 Before we get started, I wanted to briefly state what a Domain Controller is and a bit of what it can do:<br>
 
 - A Domain Controller is a server on a network that performs several functions:
-- Authentication – Verifying user’s credentials who are trying to access the network.
+- Authentication – Verifying users’ credentials who are trying to access the network.
 - Authorization - Who can use what based on their permissions.
 - Group Policy – Configuration of settings for users and computers.
 - Active Directory – Database of all users, computers, and resources in the network.<br>
@@ -47,10 +47,10 @@ Now, we’ll create a Virtual Network. Type Virtual Networks into the search bar
 
 
 
-We’ll want to fill in the necessary fields here, pay close attention to the resource group and region. We want the resource group to be the one we just made; in my case it was vm-lab-test. We want the region to be exactly the same as what we selected for our resource group. 
+We’ll want to fill in the necessary fields here; pay close attention to the resource group and region. We want the resource group to be the one we just made; in my case it was vm-lab-test. We want the region to be exactly the same as what we selected for our resource group. 
 We can name the network what we want, so I’ll name it vm-network.
 ![7](https://github.com/user-attachments/assets/adb71e23-425c-487b-8b67-df35d858732f)
-When we’re done, we’ll click the blue button at the bottom that says Review + create and on the following screen, review the information one last time and then click the blue button at the bottom labeled Create.<br><br><br><br>
+When we’re done, we’ll click the blue button at the bottom that says Review + create and on the following screen, review the information one last time, and then click the blue button at the bottom labeled Create.<br><br><br><br>
 
 
 Azure should be creating your virtual network now.
@@ -184,7 +184,7 @@ Click the network interface/IP configuration, which is the virtual – NIC( Netw
 ![26](https://github.com/user-attachments/assets/2415aab3-be73-4a24-aa69-e4107cdeef55)<br><br><br><br>
  
 
-Click on ipconfig1
+Click on ipconfig1.
 ![27](https://github.com/user-attachments/assets/f9c4792a-902c-44e1-9c1d-d50d25505162)<br><br><br><br>
 
 
@@ -211,7 +211,7 @@ In the menu that opens, click Networking -> Network Settings -> The Virtual Netw
 
 
 Settings -> DNS Severs -> Under DNS Servers<br>
-By default, Client-1 will be using the V-net’s DNS server but we’re going to select custom and type in the private IP address of DC-1.
+By default, Client-1 will be using the V-net’s DNS server, but we’re going to select custom and type in the private IP address of DC-1.
 ![41](https://github.com/user-attachments/assets/78582ce7-3a1f-41dd-b99d-e337b6e8e47f)<br><br><br><br>
 
 
@@ -229,7 +229,7 @@ Go back to the main Virtual Machines page, select the box next to Client-1, and 
 After Client-1 finishes restarting, we’re going to log into DC-1 so we can disable the firewalls. Open remote desktop and type in the Public IP address for DC-1 and use the credentials you created for DC-1 and log in.<br><br> 
 
 **Quick Tip** --<br><br><br>
-If you forget your username or password, go to the virtual machines main page and click on the virtual machine whose credentials you’ve forgotten in this case, let’s say it’s DC-1.
+If you forget your username or password, go to the virtual machines main page and click on the virtual machine whose credentials you’ve forgotten; in this case, let’s say it’s DC-1.
 ![30](https://github.com/user-attachments/assets/897fd676-30e2-4cd5-b0ad-482e6ad45793)<br><br><br><br>
 
 
@@ -260,7 +260,7 @@ When the Windows Defender Firewall with Advanced Security window opens up, we’
 ![35](https://github.com/user-attachments/assets/7fc38b3a-77d5-4d4e-ba83-a42930a7ea09)<br><br><br><br>
 
 
-We’ll right click on Windows Defender Firewall with Advanced Security on Local Computer and go to properties.
+We’ll right-click on Windows Defender Firewall with Advanced Security on Local Computer and go to properties.
 
 ![36](https://github.com/user-attachments/assets/d2d53dbc-9c51-4498-92de-9641ddab6b0e)<br><br><br><br>
 
@@ -270,7 +270,7 @@ In the properties window that opened up to Domain Profile, where it says Firewal
 ![37](https://github.com/user-attachments/assets/7bfb9195-852e-487a-930d-abd8327f080b)<br><br><br><br>
 
 
-We’ll want to do this for the next two tabs as well, Private Profile, and Public Profile.
+We’ll want to do this for the next two tabs as well, Private Profile and Public Profile.
 
 ![38](https://github.com/user-attachments/assets/edc1e2cd-aaf8-4df1-9fa7-37f9cc9d6fbf)<br><br><br><br>
 
@@ -293,13 +293,13 @@ Press enter, and we should get a reply back.
 
 
 
-To ensure that the DNS Server is in fact set to DC-1’s private IP address, in PowerShell you can type ipconfig/all and near the bottom where it says DNS Server it should display DC-1’s private IP address, in my case, it’s 10.0.0.4.
+To ensure that the DNS Server is in fact set to DC-1’s private IP address, in PowerShell you can type ipconfig/all and near the bottom where it says DNS Server it should display DC-1’s private IP address; in my case, it’s 10.0.0.4.
 
 ![46](https://github.com/user-attachments/assets/e004d017-eb2a-4b5a-a279-ea254683b2eb)<br><br><br><br>
 
 
 
-If it isn’t displaying DC-1’s private IP address, a mistake has been made, maybe Client-1 wasn’t restarted after we customized the IP address to point at DC-1’s private IP address? If that’s the case, restarting Client-1 will resolve the issue.
+If it isn’t displaying DC-1’s private IP address, a mistake has been made; maybe Client-1 wasn’t restarted after we customized the IP address to point at DC-1’s private IP address? If that’s the case, restarting Client-1 will resolve the issue.
 ![45](https://github.com/user-attachments/assets/87c0a9d3-c379-4b7f-82c2-d38a974b1fc7)<br><br>
 
 
